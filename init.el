@@ -68,8 +68,9 @@
   ;; file
   "fs"  'save-buffer
   "fj"  'fzf
+  "fd"  'dired
   "f/"  'fzf-grep
-  "fed" '(lambda () (find-file "~/.emacs.d/init.el"))
+  "fed" '(lambda () (interactive) (find-file "~/.emacs.d/init.el"))
 
   ;; project
   "pj" 'fzf-git
@@ -81,7 +82,14 @@
   "bn" 'next-buffer
 
   ;; lisp stuff
-  "kw" 'paredit-wrap-round
+  ;;"kw" 'paredit-wrap-round
+
+  ;; comment
+  "cl" 'comment-line
+
+  ;; alignment
+  "aa" 'align
+  "ae" 'align-entire
   )
 
 ;; lisp modes bindings, hopefully
