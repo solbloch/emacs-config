@@ -23,7 +23,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;;(load-theme deeper-blue)
+;;(load-theme tango-dark t)
 
 
 ;; Enable Evil
@@ -67,7 +67,7 @@
 
   ;; file
   "fs"  'save-buffer
-  "fj"  'fzf
+  "fj"  'fzf-git
   "fd"  'dired
   "f/"  'fzf-grep
   "fed" '(lambda () (interactive) (find-file "~/.emacs.d/init.el"))
@@ -80,9 +80,10 @@
   "bb" 'helm-mini
   "bp" 'previous-buffer
   "bn" 'next-buffer
+  "bN" 'evil-new-buffer
 
   ;; lisp stuff
-  ;;"kw" 'paredit-wrap-round
+  "kw" '(lambda () (interactive) (paredit-wrap-round))
 
   ;; comment
   "cl" 'comment-line
@@ -101,6 +102,16 @@
   "eb" 'eval-buffer
   "er" 'eval-region
   "ef" 'eval-defun
+  )
+
+;; python mode stuff
+(general-nmap
+  :keymaps 'python-mode
+  :states  '(normal visual)
+  :prefix ","
+  "eb" 'python-shell-send-buffer
+  "er" 'python-shell-send-region
+  "ef" 'python-shell-send-defun
   )
 
 ;; common lisp stuff from spacemacs
@@ -126,6 +137,7 @@
   "gb" 'slime-pop-find-definition-stack
   "gn" 'slime-next-note
   "gN" 'slime-previous-note
+  "gg" 'slime-edit-definition
 
   "ha" 'slime-apropos
   "hA" 'slime-apropos-all
@@ -150,6 +162,7 @@
   "se" 'slime-eval-last-expression-in-repl
   "si" 'slime
   "sq" 'slime-quit-lisp
+  "ss" 'slime-repl
 
   "tf" 'slime-toggle-fancy-trace
   )
